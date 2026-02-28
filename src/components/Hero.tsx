@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 
 export default function Hero() {
   return (
-    <section className="relative flex min-h-screen items-center justify-center px-6">
+    <section id="hero" className="relative flex min-h-screen items-center justify-center px-6">
       {/* Subtle gradient orb */}
       <motion.div
         initial={{ opacity: 0, scale: 0.5 }}
@@ -101,7 +101,7 @@ export default function Hero() {
             </svg>
           </a>
           <a
-            href="mailto:clementhmcabus@gmail.com"
+            href="#contact"
             className="text-muted hover:text-foreground transition-colors"
             aria-label="Email"
           >

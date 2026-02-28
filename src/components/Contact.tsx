@@ -14,6 +14,16 @@ export default function Contact() {
   });
   const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
   const [errorMsg, setErrorMsg] = useState("");
+  const [showEmail, setShowEmail] = useState(false);
+  const [copied, setCopied] = useState(false);
+
+  const email = "clementhmcabus@gmail.com";
+
+  const copyEmail = () => {
+    navigator.clipboard.writeText(email);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  };
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
@@ -47,15 +57,15 @@ export default function Contact() {
 
         {/* Direct contact info */}
         <div className="mt-8 flex flex-wrap items-center justify-center gap-6">
-          <a
-            href="mailto:clementhmcabus@gmail.com"
+          <button
+            onClick={() => setShowEmail(true)}
             className="flex items-center gap-2 text-sm text-muted hover:text-foreground transition-colors"
           >
             <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
             </svg>
             clementhmcabus@gmail.com
-          </a>
+          </button>
           <a
             href="https://www.linkedin.com/in/clement-cabus/"
             target="_blank"
@@ -201,6 +211,54 @@ export default function Contact() {
               >
                 {status === "sent" ? "Got it" : "Try Again"}
               </button>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      {/* Email Modal */}
+      <AnimatePresence>
+        {showEmail && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.2 }}
+            className="fixed inset-0 z-50 flex items-center justify-center bg-background/70 backdrop-blur-sm px-6"
+            onClick={() => { setShowEmail(false); setCopied(false); }}
+          >
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9, y: 20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.9, y: 20 }}
+              transition={{ duration: 0.25, ease: "easeOut" }}
+              className="relative w-full max-w-sm rounded-2xl border border-border bg-card p-8 text-center shadow-2xl"
+              onClick={(e) => e.stopPropagation()}
+            >
+              {/* Email icon */}
+              <div className="mx-auto mb-5 flex h-14 w-14 items-center justify-center rounded-full bg-accent/15">
+                <svg className="h-7 w-7 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                </svg>
+              </div>
+              <h4 className="text-lg font-bold text-foreground">My Email</h4>
+              <p className="mt-3 select-all rounded-lg bg-background px-4 py-2.5 font-mono text-sm text-foreground">
+                {email}
+              </p>
+              <div className="mt-5 flex items-center justify-center gap-3">
+                <button
+                  onClick={copyEmail}
+                  className="rounded-lg bg-accent px-5 py-2.5 text-sm font-medium text-white transition-colors hover:bg-accent-hover"
+                >
+                  {copied ? "Copied!" : "Copy"}
+                </button>
+                <button
+                  onClick={() => { setShowEmail(false); setCopied(false); }}
+                  className="rounded-lg border border-border px-5 py-2.5 text-sm font-medium text-muted transition-colors hover:text-foreground hover:border-foreground/20"
+                >
+                  Close
+                </button>
+              </div>
             </motion.div>
           </motion.div>
         )}
