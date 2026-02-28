@@ -17,6 +17,9 @@ export const metadata: Metadata = {
   title: "Clement Cabus — Software Developer",
   description:
     "Detail-oriented Software Developer and CS student at the University of Makati. Experienced in full-stack web and Android development.",
+  icons: {
+    icon: "/favicon.svg",
+  },
 };
 
 export default function RootLayout({
