@@ -34,7 +34,7 @@ export default function Navbar() {
           href="#"
           className="text-xl font-bold tracking-tight text-foreground hover:text-accent transition-colors"
         >
-          Portfolio<span className="text-accent">.</span>
+          Clement Cabus<span className="text-accent">.</span>
         </a>
 
         {/* Desktop links */}

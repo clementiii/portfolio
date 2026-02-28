@@ -32,10 +32,10 @@ export default function Showcase() {
                 <span className="h-3 w-3 rounded-full bg-green-500/70" />
               </div>
               <div className="flex-1 rounded-md bg-background px-3 py-1 text-xs text-muted truncate">
-                elec-3-compilation-hnan.vercel.app
+                play.bathala.quest
               </div>
               <a
-                href="https://elec-3-compilation-hnan.vercel.app/"
+                href="https://play.bathala.quest/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-1.5 text-xs text-muted hover:text-foreground transition-colors"
@@ -68,8 +68,8 @@ export default function Showcase() {
                 </div>
               )}
               <iframe
-                src="https://elec-3-compilation-hnan.vercel.app/"
-                title="ELEC 3 Compilation — Live Preview"
+                src="https://play.bathala.quest/"
+                title="Bathala — Live Preview"
                 className={`h-full w-full border-0 transition-opacity duration-500 ${
                   loaded ? "opacity-100" : "opacity-0"
                 }`}
@@ -84,7 +84,7 @@ export default function Showcase() {
           <p className="mt-4 text-center text-xs text-muted">
             Interact with the live site above, or{" "}
             <a
-              href="https://elec-3-compilation-hnan.vercel.app/"
+              href="https://play.bathala.quest/"
               target="_blank"
               rel="noopener noreferrer"
               className="text-accent hover:underline"
