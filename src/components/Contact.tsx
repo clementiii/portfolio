@@ -2,20 +2,33 @@
 
 import { useState, type FormEvent } from "react";
 import { FadeIn } from "./animations";
+import { sendContactEmail } from "@/app/actions/contact";
+import { motion, AnimatePresence } from "framer-motion";
 
 export default function Contact() {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
+    subject: "",
     message: "",
   });
+  const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
+  const [errorMsg, setErrorMsg] = useState("");
 
-  const handleSubmit = (e: FormEvent) => {
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
-    // TODO: connect to your email service (e.g. Resend, EmailJS, Formspree)
-    console.log("Form submitted:", formData);
-    alert("Thanks for your message! I'll get back to you soon.");
-    setFormData({ name: "", email: "", message: "" });
+    setStatus("sending");
+    setErrorMsg("");
+
+    const result = await sendContactEmail(formData);
+
+    if (result.success) {
+      setStatus("sent");
+      setFormData({ name: "", email: "", subject: "", message: "" });
+    } else {
+      setStatus("error");
+      setErrorMsg(result.error);
+    }
   };
 
   return (
@@ -92,6 +105,22 @@ export default function Contact() {
             </div>
           </div>
           <div>
+            <label htmlFor="subject" className="mb-2 block text-sm text-muted">
+              Subject
+            </label>
+            <input
+              id="subject"
+              type="text"
+              required
+              value={formData.subject}
+              onChange={(e) =>
+                setFormData({ ...formData, subject: e.target.value })
+              }
+              className="w-full rounded-lg border border-border bg-card px-4 py-3 text-sm text-foreground placeholder:text-muted/50 outline-none transition-colors focus:border-accent"
+              placeholder="Project inquiry"
+            />
+          </div>
+          <div>
             <label htmlFor="message" className="mb-2 block text-sm text-muted">
               Message
             </label>
@@ -109,13 +138,73 @@ export default function Contact() {
           </div>
           <button
             type="submit"
-            className="w-full rounded-lg bg-accent px-8 py-3 text-sm font-medium text-white transition-colors hover:bg-accent-hover sm:w-auto"
+            disabled={status === "sending"}
+            className="w-full rounded-lg bg-accent px-8 py-3 text-sm font-medium text-white transition-colors hover:bg-accent-hover disabled:opacity-50 disabled:cursor-not-allowed sm:w-auto"
           >
-            Send Message
+            {status === "sending" ? "Sending..." : "Send Message"}
           </button>
+
+          {status === "error" && (
+            <p className="mt-4 text-sm text-red-400">{errorMsg}</p>
+          )}
         </form>
       </FadeIn>
       </div>
+
+      {/* Success / Error Modal Overlay */}
+      <AnimatePresence>
+        {(status === "sent" || status === "error") && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.2 }}
+            className="fixed inset-0 z-50 flex items-center justify-center bg-background/70 backdrop-blur-sm px-6"
+            onClick={() => setStatus("idle")}
+          >
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9, y: 20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.9, y: 20 }}
+              transition={{ duration: 0.25, ease: "easeOut" }}
+              className="relative w-full max-w-md rounded-2xl border border-border bg-card p-8 text-center shadow-2xl"
+              onClick={(e) => e.stopPropagation()}
+            >
+              {status === "sent" ? (
+                <>
+                  {/* Checkmark icon */}
+                  <div className="mx-auto mb-5 flex h-14 w-14 items-center justify-center rounded-full bg-accent/15">
+                    <svg className="h-7 w-7 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
+                    </svg>
+                  </div>
+                  <h4 className="text-xl font-bold text-foreground">Message Sent!</h4>
+                  <p className="mt-2 text-sm text-muted">
+                    Thanks for reaching out. I&apos;ll get back to you as soon as possible.
+                  </p>
+                </>
+              ) : (
+                <>
+                  {/* Error icon */}
+                  <div className="mx-auto mb-5 flex h-14 w-14 items-center justify-center rounded-full bg-red-500/15">
+                    <svg className="h-7 w-7 text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                  </div>
+                  <h4 className="text-xl font-bold text-foreground">Something went wrong</h4>
+                  <p className="mt-2 text-sm text-muted">{errorMsg}</p>
+                </>
+              )}
+              <button
+                onClick={() => setStatus("idle")}
+                className="mt-6 rounded-lg bg-accent px-6 py-2.5 text-sm font-medium text-white transition-colors hover:bg-accent-hover"
+              >
+                {status === "sent" ? "Got it" : "Try Again"}
+              </button>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </section>
   );
 }
