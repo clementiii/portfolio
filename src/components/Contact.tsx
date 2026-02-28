@@ -94,7 +94,7 @@ export default function Contact() {
                   setFormData({ ...formData, name: e.target.value })
                 }
                 className="w-full rounded-lg border border-border bg-card px-4 py-3 text-sm text-foreground placeholder:text-muted/50 outline-none transition-colors focus:border-accent"
-                placeholder="John Doe"
+                placeholder="Name"
               />
             </div>
             <div>
@@ -110,7 +110,7 @@ export default function Contact() {
                   setFormData({ ...formData, email: e.target.value })
                 }
                 className="w-full rounded-lg border border-border bg-card px-4 py-3 text-sm text-foreground placeholder:text-muted/50 outline-none transition-colors focus:border-accent"
-                placeholder="john@example.com"
+                placeholder="name@example.com"
               />
             </div>
           </div>
@@ -127,7 +127,7 @@ export default function Contact() {
                 setFormData({ ...formData, subject: e.target.value })
               }
               className="w-full rounded-lg border border-border bg-card px-4 py-3 text-sm text-foreground placeholder:text-muted/50 outline-none transition-colors focus:border-accent"
-              placeholder="Project inquiry"
+              placeholder="Subject"
             />
           </div>
           <div>
@@ -143,7 +143,7 @@ export default function Contact() {
                 setFormData({ ...formData, message: e.target.value })
               }
               className="w-full resize-none rounded-lg border border-border bg-card px-4 py-3 text-sm text-foreground placeholder:text-muted/50 outline-none transition-colors focus:border-accent"
-              placeholder="Tell me about your project..."
+              placeholder="What's on your mind?"
             />
           </div>
           <button

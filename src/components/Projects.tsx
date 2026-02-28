@@ -55,9 +55,9 @@ export default function Projects() {
 
         <StaggerContainer className="mt-16 grid gap-6 sm:grid-cols-2">
           {projects.map((project) => (
-            <StaggerItem key={project.title}>
+            <StaggerItem key={project.title} className="h-full">
               <div
-                className="group rounded-2xl border border-border bg-card p-6 transition-all duration-300 hover:border-accent/40 hover:bg-card-hover hover:-translate-y-1 hover:shadow-lg hover:shadow-accent/5"
+                className="group flex h-full flex-col rounded-2xl border border-border bg-card p-6 transition-all duration-300 hover:border-accent/40 hover:bg-card-hover hover:-translate-y-1 hover:shadow-lg hover:shadow-accent/5"
             >
               {/* Project image */}
               <div className="relative mb-4 h-48 w-full overflow-hidden rounded-xl border border-border">
@@ -72,7 +72,7 @@ export default function Projects() {
               <h4 className="text-xl font-semibold text-foreground group-hover:text-accent transition-colors">
                 {project.title}
               </h4>
-              <p className="mt-2 text-sm leading-relaxed text-muted">
+              <p className="mt-2 flex-1 text-sm leading-relaxed text-muted">
                 {project.description}
               </p>
 

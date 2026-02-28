@@ -17,8 +17,7 @@ export default function Showcase() {
             See it in action
           </h3>
           <p className="mt-4 text-center text-muted">
-            An interactive preview of one of my projects — explore it live right
-            here.
+            An interactive preview of <a href="https://www.bathala.quest/" target="_blank" rel="noopener noreferrer" className="text-foreground font-medium hover:text-accent transition-colors">Bathala</a> — our 4th-year thesis project built with my group, <a href="https://www.facebook.com/playbathala" target="_blank" rel="noopener noreferrer" className="text-foreground font-medium hover:text-accent transition-colors">Devlocke</a>.
           </p>
         </FadeIn>
 
