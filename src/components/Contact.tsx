@@ -42,13 +42,13 @@ export default function Contact() {
   };
 
   return (
-    <section id="contact" className="px-6 py-24">
+    <section id="contact" className="px-4 sm:px-6 py-16 sm:py-24">
       <div className="mx-auto max-w-2xl">
       <FadeIn>
         <h2 className="text-center text-sm font-medium tracking-widest text-accent uppercase">
           Contact
         </h2>
-        <h3 className="mt-2 text-center text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
+        <h3 className="mt-2 text-center text-2xl sm:text-3xl font-bold tracking-tight text-foreground md:text-4xl">
           Get in touch
         </h3>
         <p className="mt-4 text-center text-muted">
@@ -56,10 +56,10 @@ export default function Contact() {
         </p>
 
         {/* Direct contact info */}
-        <div className="mt-8 flex flex-wrap items-center justify-center gap-6">
+        <div className="mt-8 flex flex-col sm:flex-row flex-wrap items-center justify-center gap-4 sm:gap-6">
           <button
             onClick={() => setShowEmail(true)}
-            className="flex items-center gap-2 text-sm text-muted hover:text-foreground transition-colors"
+            className="flex items-center gap-2 text-xs sm:text-sm text-muted hover:text-foreground transition-colors break-all sm:break-normal"
           >
             <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
@@ -79,7 +79,7 @@ export default function Contact() {
           </a>
         </div>
 
-        <form onSubmit={handleSubmit} className="mt-12 space-y-6">
+        <form onSubmit={handleSubmit} className="mt-8 sm:mt-12 space-y-4 sm:space-y-6">
           <div className="grid gap-6 sm:grid-cols-2">
             <div>
               <label htmlFor="name" className="mb-2 block text-sm text-muted">

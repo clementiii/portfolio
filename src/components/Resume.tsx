@@ -9,13 +9,13 @@ export default function Resume() {
   const close = useCallback(() => setOpen(false), []);
 
   return (
-    <section id="resume" className="px-6 py-24">
+    <section id="resume" className="px-4 sm:px-6 py-16 sm:py-24">
       <div className="mx-auto max-w-3xl text-center">
         <FadeIn>
           <h2 className="text-sm font-medium tracking-widest text-accent uppercase">
             Resume
           </h2>
-          <h3 className="mt-2 text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
+          <h3 className="mt-2 text-2xl sm:text-3xl font-bold tracking-tight text-foreground md:text-4xl">
             My qualifications
           </h3>
           <p className="mt-4 text-muted">
@@ -25,7 +25,7 @@ export default function Resume() {
         </FadeIn>
 
         <FadeIn delay={0.2}>
-          <div className="mt-12 overflow-hidden rounded-2xl border border-border bg-card p-8 sm:p-10">
+          <div className="mt-8 sm:mt-12 overflow-hidden rounded-2xl border border-border bg-card p-6 sm:p-8 md:p-10">
             {/* Document icon */}
             <div className="mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-2xl bg-accent/10">
               <svg

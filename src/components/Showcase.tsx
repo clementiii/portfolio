@@ -7,25 +7,25 @@ export default function Showcase() {
   const [loaded, setLoaded] = useState(false);
 
   return (
-    <section id="showcase" className="px-6 py-24">
+    <section id="showcase" className="px-4 sm:px-6 py-16 sm:py-24">
       <div className="mx-auto max-w-6xl">
         <FadeIn>
           <h2 className="text-center text-sm font-medium tracking-widest text-accent uppercase">
             Showcase
           </h2>
-          <h3 className="mt-2 text-center text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
+          <h3 className="mt-2 text-center text-2xl sm:text-3xl font-bold tracking-tight text-foreground md:text-4xl">
             See it in action
           </h3>
-          <p className="mt-4 text-center text-muted">
+          <p className="mt-4 text-center text-sm sm:text-base text-muted">
             An interactive preview of <a href="https://www.bathala.quest/" target="_blank" rel="noopener noreferrer" className="text-foreground font-medium hover:text-accent transition-colors">Bathala</a> — our 4th-year thesis project built with my group, <a href="https://www.facebook.com/playbathala" target="_blank" rel="noopener noreferrer" className="text-foreground font-medium hover:text-accent transition-colors">Devlocke</a>.
           </p>
         </FadeIn>
 
         <FadeIn delay={0.2}>
-          <div className="mt-12 overflow-hidden rounded-2xl border border-border bg-card shadow-2xl shadow-accent/5">
+          <div className="mt-8 sm:mt-12 overflow-hidden rounded-xl sm:rounded-2xl border border-border bg-card shadow-2xl shadow-accent/5">
             {/* Browser chrome bar */}
-            <div className="flex items-center gap-3 border-b border-border bg-card px-4 py-3">
-              <div className="flex gap-1.5">
+            <div className="flex items-center gap-2 sm:gap-3 border-b border-border bg-card px-3 sm:px-4 py-2 sm:py-3">
+              <div className="hidden sm:flex gap-1.5">
                 <span className="h-3 w-3 rounded-full bg-red-500/70" />
                 <span className="h-3 w-3 rounded-full bg-yellow-500/70" />
                 <span className="h-3 w-3 rounded-full bg-green-500/70" />

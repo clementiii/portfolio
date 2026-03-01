@@ -44,21 +44,21 @@ const skillCategories = [
 
 export default function Skills() {
   return (
-    <section id="skills" className="px-6 py-24">
+    <section id="skills" className="px-4 sm:px-6 py-16 sm:py-24">
       <div className="mx-auto max-w-6xl">
         <FadeIn>
           <h2 className="text-center text-sm font-medium tracking-widest text-accent uppercase">
             Skills
           </h2>
-          <h3 className="mt-2 text-center text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
+          <h3 className="mt-2 text-center text-2xl sm:text-3xl font-bold tracking-tight text-foreground md:text-4xl">
             My tech stack
           </h3>
-          <p className="mt-4 text-center text-muted">
+          <p className="mt-4 text-center text-sm sm:text-base text-muted">
             Technologies and methodologies I work with
           </p>
         </FadeIn>
 
-        <StaggerContainer className="mt-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        <StaggerContainer className="mt-10 sm:mt-16 grid gap-4 sm:gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
           {skillCategories.map((category) => (
             <StaggerItem key={category.title}>
               <motion.div

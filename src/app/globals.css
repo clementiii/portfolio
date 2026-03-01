@@ -13,8 +13,24 @@
   --font-mono: var(--font-geist-mono);
 }
 
+/* --- Cross-browser & base resets --- */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+}
+
 * {
   scroll-behavior: smooth;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  overflow-x: hidden;
 }
 
 body {
@@ -25,9 +41,40 @@ body {
   background-attachment: fixed;
   color: var(--color-foreground);
   font-family: var(--font-sans), system-ui, sans-serif;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  /* Safe area insets for notched devices */
+  padding-left: env(safe-area-inset-left);
+  padding-right: env(safe-area-inset-right);
+}
+
+/* iOS background-attachment:fixed workaround */
+@supports (-webkit-touch-callout: none) {
+  body {
+    background-attachment: scroll;
+  }
 }
 
 ::selection {
   background-color: var(--color-accent);
   color: white;
+}
+
+/* Ensure minimum touch target size on interactive elements */
+@media (pointer: coarse) {
+  a,
+  button {
+    min-height: 44px;
+    min-width: 44px;
+  }
+}
+
+/* Cross-browser backdrop-blur support */
+.backdrop-blur-md {
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.backdrop-blur-sm {
+  -webkit-backdrop-filter: blur(4px);
 }

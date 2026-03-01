@@ -4,13 +4,13 @@ import { motion } from "framer-motion";
 
 export default function Hero() {
   return (
-    <section id="hero" className="relative flex min-h-screen items-center justify-center px-6">
-      {/* Subtle gradient orb */}
+    <section id="hero" className="relative flex min-h-[100svh] items-center justify-center px-4 sm:px-6">
+      {/* Subtle gradient orb — scales with viewport */}
       <motion.div
         initial={{ opacity: 0, scale: 0.5 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 1.2, ease: "easeOut" }}
-        className="pointer-events-none absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 h-[500px] w-[500px] rounded-full bg-red-600/8 blur-[120px]"
+        className="pointer-events-none absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 h-[60vw] w-[60vw] max-h-[500px] max-w-[500px] rounded-full bg-red-600/8 blur-[120px]"
       />
 
       <div className="relative z-10 mx-auto max-w-3xl text-center">
@@ -18,7 +18,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="mb-4 text-sm font-medium tracking-widest text-accent uppercase"
+          className="mb-4 text-xs sm:text-sm font-medium tracking-widest text-accent uppercase"
         >
           Hello, I&apos;m
         </motion.p>
@@ -26,7 +26,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.4 }}
-          className="text-5xl font-bold leading-tight tracking-tight text-foreground sm:text-7xl"
+          className="text-4xl font-bold leading-tight tracking-tight text-foreground sm:text-5xl md:text-7xl"
         >
           Clement Cabus
         </motion.h1>
@@ -34,7 +34,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.6 }}
-          className="mx-auto mt-6 max-w-xl text-lg leading-relaxed text-muted"
+          className="mx-auto mt-4 sm:mt-6 max-w-xl text-base sm:text-lg leading-relaxed text-muted"
         >
           Detail-oriented Software Developer and Computer Science student with
           experience in full-stack web and Android development. Eager to
@@ -44,17 +44,17 @@ export default function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.8 }}
-          className="mt-10 flex flex-col items-center gap-4 sm:flex-row sm:justify-center"
+          className="mt-8 sm:mt-10 flex flex-col items-center gap-3 sm:gap-4 sm:flex-row sm:justify-center"
         >
           <a
             href="#projects"
-            className="rounded-lg bg-accent px-8 py-3 text-sm font-medium text-white transition-colors hover:bg-accent-hover"
+            className="w-full sm:w-auto rounded-lg bg-accent px-8 py-3 text-sm font-medium text-white text-center transition-colors hover:bg-accent-hover"
           >
             View My Work
           </a>
           <a
             href="#contact"
-            className="rounded-lg border border-border px-8 py-3 text-sm font-medium text-foreground transition-colors hover:border-accent hover:text-accent"
+            className="w-full sm:w-auto rounded-lg border border-border px-8 py-3 text-sm font-medium text-foreground text-center transition-colors hover:border-accent hover:text-accent"
           >
             Get In Touch
           </a>
@@ -113,7 +113,7 @@ export default function Hero() {
       </div>
 
       {/* Scroll indicator */}
-      <div className="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce">
+      <div className="absolute bottom-6 sm:bottom-10 left-1/2 -translate-x-1/2 animate-bounce">
         <svg
           className="h-6 w-6 text-muted"
           fill="none"
