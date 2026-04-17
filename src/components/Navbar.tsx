@@ -17,6 +17,26 @@ export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
 
+  const handleMobileNavClick = (href: string) => {
+    setMenuOpen(false);
+
+    window.setTimeout(() => {
+      document.body.style.overflow = "";
+
+      const target = document.getElementById(href.replace("#", ""));
+      if (!target) return;
+
+      const header = document.querySelector("header");
+      const headerOffset =
+        header instanceof HTMLElement ? header.offsetHeight + 12 : 88;
+      const elementTop =
+        target.getBoundingClientRect().top + window.pageYOffset - headerOffset;
+
+      window.scrollTo({ top: Math.max(elementTop, 0), behavior: "smooth" });
+      window.location.hash = href;
+    }, 80);
+  };
+
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
     window.addEventListener("scroll", onScroll, { passive: true });
@@ -118,13 +138,13 @@ export default function Navbar() {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: i * 0.04 }}
                 >
-                  <a
-                    href={href}
-                    onClick={() => setMenuOpen(false)}
+                  <button
+                    type="button"
+                    onClick={() => handleMobileNavClick(href)}
                     className="text-base sm:text-lg text-muted hover:text-foreground transition-colors"
                   >
                     {label}
-                  </a>
+                  </button>
                 </motion.li>
               ))}
               <motion.li
