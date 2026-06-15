@@ -33,9 +33,9 @@ export default function About() {
           <FadeIn delay={0.2} className="md:col-span-3 space-y-4">
             <p className="text-base sm:text-lg leading-relaxed text-muted">
               I&apos;m Clement Harold Miguel Cabus, a detail-oriented Software
-              Developer and BS Computer Science (Major in Application Development)
-              student at the University of Makati, graduating in 2026. I design,
-              develop, and test software solutions across web and mobile platforms.
+              Developer and a BS Computer Science (Major in Application Development)
+              graduate at the University of Makati. I design, develop, and test 
+              software solutions across web and mobile platforms.
             </p>
             <p className="text-base sm:text-lg leading-relaxed text-muted">
               I have hands-on experience with PHP, Laravel, JavaScript, TypeScript,
